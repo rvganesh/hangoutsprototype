@@ -58,6 +58,7 @@ public class MessageSetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         mFragmentManager = getFragmentManager();
 
         View rootView = inflater.inflate(R.layout.fragment_message_set, container, false);
@@ -123,7 +124,7 @@ public class MessageSetFragment extends Fragment {
             case R.id.action_settings:
                 return true;
             case R.id.search:
-                CharSequence text = "Executing Search!";
+                CharSequence text = "Executing phase shift...";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(mContext, text, duration);

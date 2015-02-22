@@ -26,12 +26,26 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:orientation="vertical">
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:id="@+id/from"
-            android:text="Username"/>
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:id="@+id/from"
+                android:text="Username"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/timestamp"
+                android:textSize="@dimen/textAppearanceTimestamp"
+                android:text="4 mins"/>
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"

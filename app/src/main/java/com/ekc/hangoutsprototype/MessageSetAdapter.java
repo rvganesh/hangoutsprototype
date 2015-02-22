@@ -46,10 +46,10 @@ public class MessageSetAdapter extends RecyclerView.Adapter<MessageSetAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String date = DATES[i];
-        MessageAdapter messageAdapter = new MessageAdapter(MAP.get(date));
+        MessageSnippetAdapter messageSnippetAdapter = new MessageSnippetAdapter(MAP.get(date));
         viewHolder.mDateTextView.setText(date);
         viewHolder.mMessageRecyclerView.setLayoutManager(mLayoutManager);
-        viewHolder.mMessageRecyclerView.setAdapter(messageAdapter);
+        viewHolder.mMessageRecyclerView.setAdapter(messageSnippetAdapter);
     }
 
     @Override

@@ -17,12 +17,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="?colorPrimary"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            app:theme="@style/ActionBar"
+            app:popupTheme="@style/ActionBarPopup"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <!--Inner container is the container for child fragment calls (MessageFragment)-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:foreground="@drawable/action_bar_shadow"/>
 
+                <!--Compose Button-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">

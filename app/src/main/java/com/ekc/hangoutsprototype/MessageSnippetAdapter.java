@@ -1,10 +1,9 @@
 package com.ekc.hangoutsprototype;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Scene;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +16,15 @@ import java.util.ArrayList;
 /**
  * Created by erickchang on 2/18/15.
  */
-public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
+public class MessageSnippetAdapter extends RecyclerView.Adapter<MessageSnippetAdapter.ViewHolder> {
 
-    private static final String TAG = MessageAdapter.class.getSimpleName();
+    private static final String TAG = MessageSnippetAdapter.class.getSimpleName();
     private ArrayList<Message> mMessageArrayList;
     private LayoutInflater mLayoutInflater;
     private ActionBarActivity mContext;
     private FragmentManager mFragmentManager;
 
-    public MessageAdapter(ArrayList<Message> messageArrayList) {
+    public MessageSnippetAdapter(ArrayList<Message> messageArrayList) {
         mMessageArrayList = messageArrayList;
     }
 
@@ -46,19 +45,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         final int pos = i;
         Message message = mMessageArrayList.get(i);
         viewHolder.mFrom.setText(message.mFrom);
+        viewHolder.mTimestamp.setText(message.mTimestamp);
         if (message.mText != null) {
             viewHolder.mText.setText(message.mText);
         }
+
         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                vh.mText.setText(pos + "clicked");
                 // launch chat window and add to back stack
+
                 mFragmentManager.beginTransaction()
                         .replace(R.id.inner_container, new MessageFragment())
                         .addToBackStack(null)
                         .commit();
-
 
             }
         });
@@ -74,6 +75,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mFrom;
         public TextView mText;
+        public TextView mTimestamp;
         public View mView;
         public ImageView mImageView;
 
@@ -81,6 +83,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             super(v);
             mView = v;
             mFrom = (TextView) v.findViewById(R.id.from);
+            mTimestamp = (TextView) v.findViewById(R.id.timestamp);
             mText = (TextView) v.findViewById(R.id.text);
             mImageView = (ImageView) v.findViewById(R.id.person_image);
         }
