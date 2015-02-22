@@ -15,9 +15,6 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements ComposeFragment.OnFragmentInteractionListener {
 
-    ActionBarDrawerToggle mDrawerToggle;
-    DrawerLayout mDrawerLayout;
-
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -29,16 +26,7 @@ public class MainActivity extends ActionBarActivity implements ComposeFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        mDrawerToggle = new ActionBarDrawerToggle(this,
-//                mDrawerLayout,
-//                mToolbar,
-//                R.string.navigation_drawer_open,
-//                R.string.navigation_drawer_close);
-//
-//        mDrawerLayout.setDrawerListener(mDrawerToggle);
-//
-//        mDrawerToggle.syncState();
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -54,6 +42,7 @@ public class MainActivity extends ActionBarActivity implements ComposeFragment.O
 //                R.id.navigation_drawer,
 //                (DrawerLayout) findViewById(R.id.drawer_layout));
     }
+
 
 
     @Override

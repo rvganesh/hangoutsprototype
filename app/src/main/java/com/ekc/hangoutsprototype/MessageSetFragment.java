@@ -4,8 +4,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,11 +30,6 @@ public class MessageSetFragment extends Fragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
-
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -40,6 +37,9 @@ public class MessageSetFragment extends Fragment {
     private FragmentManager mFragmentManager;
     private Toolbar mToolbar;
     private ActionBarActivity mContext;
+
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;
 
     public static MessageSetFragment newInstance(int sectionNumber) {
         MessageSetFragment fragment = new MessageSetFragment();
@@ -61,10 +61,11 @@ public class MessageSetFragment extends Fragment {
         mFragmentManager = getFragmentManager();
 
         View rootView = inflater.inflate(R.layout.fragment_message_set, container, false);
-
+        mDrawerLayout = (DrawerLayout) rootView.findViewById(R.id.drawer_layout);
         // Setup toolbar
         mToolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         setupToolbar();
+        setupDrawerToggle();
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.message_set_container);
 
@@ -132,5 +133,18 @@ public class MessageSetFragment extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void setupDrawerToggle() {
+        mDrawerToggle = new ActionBarDrawerToggle(mContext,
+                mDrawerLayout,
+                mToolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        mDrawerToggle.syncState();
     }
 }
