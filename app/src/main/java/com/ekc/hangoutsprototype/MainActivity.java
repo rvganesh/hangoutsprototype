@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity implements ComposeFragment.O
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, new MessageSetFragment())
+                .replace(R.id.container, new MessageSetFragment(),"messageSetFragment")
                 .commit();
 
 //        mNavigationDrawerFragment = (NavigationDrawerFragment)

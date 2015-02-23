@@ -1,5 +1,6 @@
 package com.ekc.hangoutsprototype;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +33,9 @@ public class MessageSnippetAdapter extends RecyclerView.Adapter<MessageSnippetAd
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         mContext = (ActionBarActivity) viewGroup.getContext();
         mLayoutInflater = LayoutInflater.from(mContext);
+//        Fragment f = mContext.getSupportFragmentManager()
+//                .findFragmentByTag("messageSetFragment");
+//        mFragmentManager = f.getChildFragmentManager();
         mFragmentManager = mContext.getSupportFragmentManager();
         View v = mLayoutInflater.inflate(R.layout.message_snippet,
                 viewGroup, false);
@@ -43,7 +47,7 @@ public class MessageSnippetAdapter extends RecyclerView.Adapter<MessageSnippetAd
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         final ViewHolder vh = viewHolder;
         final int pos = i;
-        Message message = mMessageArrayList.get(i);
+        final Message message = mMessageArrayList.get(i);
         viewHolder.mFrom.setText(message.mFrom);
         viewHolder.mTimestamp.setText(message.mTimestamp);
         if (message.mText != null) {
@@ -54,10 +58,15 @@ public class MessageSnippetAdapter extends RecyclerView.Adapter<MessageSnippetAd
             @Override
             public void onClick(View v) {
 //                vh.mText.setText(pos + "clicked");
-                // launch chat window and add to back stack
 
+                // pass in Y coordinate from view (for animation purposes)
+                int[] coord = new int[2];
+                v.getLocationOnScreen(coord);
+
+                // launch chat window and add to back stack
                 mFragmentManager.beginTransaction()
-                        .replace(R.id.inner_container, new MessageFragment())
+                        .replace(R.id.inner_container,
+                                MessageFragment.newInstance(message, coord[1]))
                         .addToBackStack(null)
                         .commit();
 

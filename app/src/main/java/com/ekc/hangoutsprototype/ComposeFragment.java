@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 
 /**
@@ -64,7 +66,13 @@ public class ComposeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_compose, container, false);
+        return inflater.inflate(R.layout.fragment_compose_transition, container, false);
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return AnimationUtils.loadAnimation(getActivity(),
+                enter ? android.R.anim.fade_in : android.R.anim.fade_out);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

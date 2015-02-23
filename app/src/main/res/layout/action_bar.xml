@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="#fff"
-            android:text="Username"/>
+            android:text="John Hughes"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

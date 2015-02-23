@@ -17,6 +17,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -148,4 +150,5 @@ public class MessageSetFragment extends Fragment {
 
         mDrawerToggle.syncState();
     }
+
 }
